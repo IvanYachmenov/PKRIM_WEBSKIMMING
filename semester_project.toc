@@ -1,0 +1,26 @@
+\babel@toc {slovak}{}\relax 
+\thispagestyle {plain}
+\contentsline {section}{\numberline {1}Úvod}{3}{section.1}%
+\contentsline {section}{\numberline {2}Definícia web skimmingu}{4}{section.2}%
+\contentsline {section}{\numberline {3}Technický princíp útoku}{5}{section.3}%
+\contentsline {section}{\numberline {4}Kriminálna podstata a dopady útoku}{6}{section.4}%
+\contentsline {section}{\numberline {5}Prípad 1: British Airways}{7}{section.5}%
+\contentsline {section}{\numberline {6}Prípad 2: Ticketmaster}{8}{section.6}%
+\contentsline {section}{\numberline {7}Prípad 3: Newegg alebo menšie e-shopy}{9}{section.7}%
+\contentsline {section}{\numberline {8}Porovnanie prípadov}{10}{section.8}%
+\contentsline {section}{\numberline {9}Možnosti prevencie a ochrany}{11}{section.9}%
+\contentsline {section}{\numberline {10}Záver}{12}{section.10}%
+\contentsline {section}{Literatúra}{13}{section*.11}%
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\babel@toc {slovak}{}\relax 
+\contentsline {subsection}{Použitie nástrojov umelej inteligencie}{14}{section*.12}%

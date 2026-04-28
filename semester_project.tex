@@ -1,0 +1,48 @@
+\documentclass[sp]{FEIstyle}
+
+% Author of the semester project
+\FEIauthor{Ivan Yachmenov}
+
+% Title
+\FEItitle{Web skimming a krádež platobných údajov z e-shopov}
+
+% Bibliography database file
+\bibliography{includes/bibliography.bib}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%
+%%              %%
+%% FRONT MATTER %%
+%%              %%
+%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+\FEIpdfInfo
+\FEIcover
+\FEIcontent
+
+
+
+%%%%%%%%%%%%%%%%%
+%%             %%
+%% MAIN MATTER %%
+%%             %%
+%%%%%%%%%%%%%%%%%
+\mainmatter
+
+\FEIcore{includes/body}
+
+% Example literature references; keys are defined in includes/bibliography.bib.
+\nocite{cisa2019eskimming}
+\nocite{owasp2020wstg}
+\FEIbibliography
+\newpage
+
+%% AI Declaration
+\FEIaiDeclaration{includes/ai_declaration}
+
+\backmatter
+
+
+\end{document}
