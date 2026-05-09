@@ -1,5 +1,9 @@
 \documentclass[sp]{FEIstyle}
 
+% Type shown on the cover page
+\def\typPrace{Semestr\'{a}lny projekt}
+\def\typPraceEn{Semester project}
+
 % Author of the semester project
 \FEIauthor{Ivan Yachmenov}
 
@@ -8,6 +12,7 @@
 
 % Bibliography database file
 \bibliography{includes/bibliography.bib}
+
 
 \begin{document}
 
@@ -21,7 +26,7 @@
 \FEIpdfInfo
 \FEIcover
 \FEIcontent
-
+\FEImanualListOfGlossaries{includes/abbreviations}
 
 
 %%%%%%%%%%%%%%%%%
@@ -33,9 +38,6 @@
 
 \FEIcore{includes/body}
 
-% Example literature references; keys are defined in includes/bibliography.bib.
-\nocite{cisa2019eskimming}
-\nocite{owasp2020wstg}
 \FEIbibliography
 \newpage
 

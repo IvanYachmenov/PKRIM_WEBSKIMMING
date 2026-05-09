@@ -1,3 +1,19 @@
 \section{Definícia web skimmingu}
 
-Text kapitoly doplníš sem.
+\subsection{Pojem web skimming a základná definícia}
+
+Web skimming je forma počítačovej kriminality zameraná na krádež platobných a osobných údajov pri online platbách. V odbornej literatúre sa používajú aj označenia e-skimming, digital skimming, online skimming, formjacking alebo Magecart útok; tieto pojmy nie sú vždy úplne synonymné, ale opisujú podobný princíp -- útočník vloží alebo upraví škodlivý kód na webovej stránke (najčastejšie platobnej alebo objednávkovej) a ten zachytáva údaje zadávané používateľom \cite{europolDigitalSkimming,broadcomSymantecFormjacking}.
+
+Z definícií FBI a CISA vyplýva, že podstatou web skimmingu nie je presmerovanie používateľa na falošnú stránku, ale zneužitie legitímnej stránky alebo legitímne vyzerajúceho platobného procesu: skimmingový kód je vložený na platobné stránky e-commerce webov a útočník môže prístup k webu získať aj cez phishing voči zamestnancom alebo cez zraniteľného dodávateľa tretej strany \cite{cisa2020eskimming,fbi2019eskimming}. Z technického hľadiska ide najčastejšie o škodlivý JavaScript spustený v prehliadači zákazníka, ktorý sleduje formulár a kopíruje zadávané údaje (PCI SSC ho označuje aj ako JavaScript sniffer) \cite{pciSsc2025PaymentPage}.
+
+Pojem Magecart neoznačuje konkrétny program, ale viacero kyberzločineckých skupín a kampaní, ktoré nasadzujú digitálne skimmery na kompromitované e-shopy a sú spájané s incidentmi British Airways, Ticketmaster a Newegg \cite{fortinet2019MagecartSkimmer}. V tejto práci sa ako hlavný pojem používa web skimming, pretože najlepšie vystihuje podstatu útoku -- digitálne zachytávanie údajov z platobného procesu na webovej stránke.
+
+\subsection{Odlišnosť od príbuzných foriem útokov}
+
+Pri phishingu sa útočník snaží presvedčiť používateľa, aby otvoril falošnú stránku a sám zadal údaje. Pri web skimmingu zákazník navštevuje skutočnú stránku legitímneho obchodníka -- problémom nie je falošná doména, ale škodlivý kód vložený do legitímnej platobnej stránky alebo do skriptu, ktorý sa na nej načítava \cite{cisa2020eskimming,fbi2019eskimming}. Rozdiel je aj oproti úniku databázy: pri ňom útočník získava údaje uložené na serveri, kým pri web skimmingu sa zachytávajú priamo v okamihu zadávania do formulára, ešte pred ich spracovaním platobnou bránou alebo serverom obchodníka \cite{cisa2020eskimming,pciSsc2025PaymentPage}.
+
+Web skimming sa odohráva na strane klienta, teda v prehliadači používateľa. Tradičné bezpečnostné opatrenia sa sústreďujú na server a databázu, no problémom môže byť práve JavaScript spustený na platobnej stránke -- či už od prevádzkovateľa, alebo od tretej strany (analytika, reklamný systém, chatbot, knižnica). OWASP zdôrazňuje, že jedným z najväčších rizík pri JavaScripte tretích strán je kompromitácia servera tretej strany a vloženie škodlivého kódu do pôvodného skriptu, ktorý sa následne načíta aj na platobnej stránke \cite{owaspThirdPartyJavascript,owaspClientSideTop10}. Na rozdiel od ransomvéru, DDoS alebo defacementu pritom útok nenarúša dostupnosť: e-shop ďalej funguje a útok býva odhalený až nepriamo cez podvodné transakcie, monitoring alebo upozornenie banky.
+
+\subsection{Typické prostredie útoku}
+
+Typickým cieľom sú stránky, kde zákazníci zadávajú platobné alebo osobné údaje -- e-shopy, cestovné portály, rezervačné systémy alebo stránky na predaj vstupeniek -- pretože jedna kompromitovaná platobná stránka môže zhromažďovať údaje od veľkého počtu zákazníkov \cite{europolDigitalSkimming}. Stránka pritom môže byť dôveryhodná, používať HTTPS a patriť známej firme, no HTTPS chráni iba prenos medzi prehliadačom a serverom -- ak je škodlivý kód súčasťou stránky, môže údaje zachytiť ešte pred ich odoslaním. Ukradnuté údaje majú priamu finančnú hodnotu, takže web skimming je vhodné chápať ako finančne motivovanú kybernetickú kriminalitu, nie iba ako technickú zraniteľnosť \cite{cisa2020eskimming,pciSsc2025PaymentPage,europolDigitalSkimming}.

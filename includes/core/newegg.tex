@@ -1,3 +1,43 @@
-\section{Prípad 3: Newegg alebo menšie e-shopy}
+\section{Prípadová štúdia: Newegg a Magecart}
 
-Text kapitoly doplníš sem.
+\subsection{Charakteristika incidentu}
+
+Prípad Newegg patrí medzi známe príklady web skimmingu vo veľkom e-commerce prostredí. Newegg je internetový predajca elektroniky a počítačového hardvéru, kde zákazníci počas nákupu zadávajú platobné údaje priamo v objednávkovom procese. V porovnaní s British Airways a Ticketmaster je Newegg vhodný najmä ako ukážka klasického Magecart scenára -- vloženia škodlivého JavaScriptu do checkout procesu e-shopu \cite{volexity2018Newegg,fortinet2019MagecartSkimmer}.
+
+Podľa analýzy Volexity (v spolupráci s RiskIQ) bol útok zameraný na e-commerce operácie Newegg a pripísaný aktérom Magecart. Volexity overila prítomnosť škodlivého JavaScriptu na stránke secure.newegg.com, konkrétne v checkout procese na stránke s fakturačnými údajmi; kód získaval údaje z formulára a odosielal ich na doménu kontrolovanú útočníkmi \cite{volexity2018Newegg}.
+
+Útočníci použili doménu neweggstats.com, ktorá pripomínala legitímne prostredie spoločnosti Newegg a mohla pôsobiť ako analytická služba. Volexity uviedla, že doména bola zaregistrovaná 13. augusta 2018 a škodlivý kód bol odstránený 18. septembra 2018 -- útok teda mohol byť aktívny približne mesiac. Stránka pritom pre zákazníka fungovala bežne a používatelia mohli dokončiť objednávku, no skript paralelne kopíroval údaje a odosielal ich mimo prostredia obchodníka \cite{volexity2018Newegg}.
+
+\subsection{Technická a kriminálna stránka prípadu}
+
+Do checkout procesu Newegg bol vložený malý a cielene prispôsobený škodlivý JavaScript: aktivoval sa pri interakcii s platobným tlačidlom, čítal údaje z formulára a odosielal ich na infraštruktúru útočníka. Volexity uviedla, že bol podobný kódu pri British Airways, ale ešte viac minimalizovaný a prispôsobený cieľovej stránke, čo svedčí o tom, že aktéri Magecart skripty cielene upravovali \cite{volexity2018Newegg}.
+
+Charakteristické bolo aj maskovanie: doména neweggstats.com pôsobila ako bežná súčasť prevádzky a v prostredí plnom analytických a externých služieb mohla byť ľahko prehliadnutá. Prípad zároveň ukazuje, že HTTPS na ochranu nestačí -- zachytené údaje boli odosielané cez SSL/TLS na doménu útočníkov; šifrovaný prenos chráni iba pred odpočúvaním po ceste, nie pred nedôveryhodným cieľom komunikácie \cite{owaspSRI,pciSsc2025PaymentPage,volexity2018Newegg}.
+
+\subsection{Následky a význam prípadu}
+
+Newegg ilustruje technický model Magecart útoku v e-commerce: útočník nepotreboval narušiť dostupnosť, stačilo, aby sa kód spustil v správnom momente pri zadávaní údajov, a útočnícka infraštruktúra bola zámerne prispôsobená kontextu cieľovej služby \cite{volexity2018Newegg,fortinet2019MagecartSkimmer}.
+
+Hlavným poučením pre prevádzkovateľov je, že nestačí kontrolovať iba server a databázu -- rovnako dôležité je sledovať klientský kód na platobnej stránke, externé domény, ktoré stránka kontaktuje, a prípadné neoprávnené zmeny skriptov. Nestačí pritom hľadať iba známe vzory škodlivého kódu -- treba sledovať aj zmeny správania platobnej stránky a komunikáciu s externými doménami \cite{pciSsc2025PaymentPage}.
+
+\subsection{Zhrnutie prípadu Newegg}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Základné údaje o prípade Newegg}
+    \label{tab:newegg-summary}
+    \begin{tabularx}{\textwidth}{@{}p{0.34\textwidth}X@{}}
+        \toprule
+        \textbf{Kritérium} & \textbf{Newegg} \\
+        \midrule
+        Rok incidentu & 2018 \\
+        Typ organizácie & E-commerce obchod s elektronikou a počítačovým hardvérom \\
+        Typ útoku & Magecart / web skimming \\
+        Cieľ útoku & Checkout proces a platobné údaje zákazníkov \\
+        Technický prvok & Škodlivý JavaScript v checkout procese na doméne \mbox{secure.newegg.com} \\
+        Útočnícka infraštruktúra & Doména neweggstats.com \\
+        Obdobie útoku & Približne august až september 2018 \\
+        Hlavné poučenie & Nutnosť monitorovať klientský kód, externé domény a zmeny na platobných stránkach \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

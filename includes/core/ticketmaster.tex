@@ -1,3 +1,41 @@
-\section{Prípad 2: Ticketmaster}
+\section{Prípadová štúdia: Ticketmaster}
 
-Text kapitoly doplníš sem.
+\subsection{Charakteristika incidentu}
+
+Prípad Ticketmaster UK Limited patrí medzi najvýznamnejšie príklady web skimmingu v prostredí služieb tretích strán. Osobitosť tohto prípadu spočívala v tom, že riziko nesúviselo len s vlastnou stránkou Ticketmasteru, ale aj s chatbotom tretej strany nasadeným v online prostredí vrátane platobnej stránky \cite{ico2020Ticketmaster}.
+
+Podľa rozhodnutia ICO sa posudzovaný incident týkal osobných údajov spracúvaných od 25. mája do 23. júna 2018, pričom širšie porušenie ochrany osobných údajov trvalo už od februára 2018. Ako potenciálne dotknutých bolo informovaných približne 9,4 milióna osôb v EHP, z toho približne 1,5 milióna zo Spojeného kráľovstva. Škodlivý kód spojený s chatbotom mohol zachytávať údaje vrátane mena, adresy, e-mailu, čísla platobnej karty, bezpečnostného kódu a prihlasovacích údajov do služby \cite{ico2020Ticketmaster}.
+
+Incident neostal v rovine potenciálneho ohrozenia. Barclays Bank informovala o približne 60\,000 kompromitovaných kartách a Monzo Bank vymenila približne 6\,000 kariet; Ticketmaster prijal okolo 997 sťažností týkajúcich sa finančnej straty alebo emocionálnej ujmy \cite{ico2020Ticketmaster}. Web skimming tak môže mať praktický dopad nielen na prevádzkovateľa a zákazníkov, ale aj na banky a platobné inštitúcie.
+
+\subsection{Technická a kriminálna stránka prípadu}
+
+Technickú podstatu tvoril chatbot spoločnosti Inbenta, ktorý slúžil ako zákaznícke rozhranie a na niektorých stránkach bol aktívny aj bez priamej interakcie. Škodlivý kód spojený s týmto komponentom mohol zachytávať údaje zadávané používateľmi v prostredí, kde bol nasadený \cite{ico2020Ticketmaster}. Pre web skimming je to kľúčové: nebezpečný nemusí byť iba kód prevádzkovateľa, ale aj externý prvok spustený v prehliadači zákazníka, a útok nemusí začínať prelomením hlavného servera \cite{owaspThirdPartyJavascript}.
+
+ICO Ticketmasteru vytýkalo nedostatočné posúdenie rizík chatbota na platobnej stránke, nedostatočné bezpečnostné opatrenia a oneskorené určenie zdroja podozrivej aktivity \cite{ico2020Ticketmaster}. Incident teda nie je iba zlyhaním externého dodávateľa -- prevádzkovateľ musí vedieť, aký kód sa na platobnej stránke spúšťa, čo zodpovedá aj požiadavkám PCI Security Standards Council na autorizáciu skriptov, kontrolu integrity a monitorovanie neoprávnených zmien \cite{pciSsc2025PaymentPage}.
+
+\subsection{Následky a význam prípadu}
+
+ICO uložilo Ticketmaster UK Limited pokutu 1,25 milióna libier. Konštatovalo porušenie článku 5 ods. 1 písm. f) GDPR a článku 32 GDPR -- princípu integrity a dôvernosti a povinnosti prijať primerané technické a organizačné opatrenia \cite{ico2020Ticketmaster}. Prípad ukazuje, že zodpovednosť prevádzkovateľa sa vzťahuje aj na riziká z externých služieb: Ticketmaster nemusel byť autorom škodlivého kódu, no externý komponent bol súčasťou prostredia, kde zákazníci zadávali údaje, takže problém nemožno presunúť iba na dodávateľa \cite{pciSsc2025PaymentPage}. Hlavným poučením je, že každý externý skript na platobnej stránke rozširuje plochu útoku a musí byť hodnotený, kontrolovaný a monitorovaný \cite{owaspThirdPartyJavascript}.
+
+\subsection{Zhrnutie prípadu Ticketmaster}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Základné údaje o prípade Ticketmaster}
+    \label{tab:ticketmaster-summary}
+    \begin{tabularx}{\textwidth}{@{}p{0.34\textwidth}X@{}}
+        \toprule
+        \textbf{Kritérium} & \textbf{Ticketmaster UK Limited} \\
+        \midrule
+        Rok incidentu & 2018 \\
+        Typ organizácie & Online predaj vstupeniek \\
+        Typ útoku & Web skimming cez komponent tretej strany \\
+        Rizikový prvok & Chatbot tretej strany nasadený aj v online platobnom prostredí \\
+        Potenciálne dotknuté osoby & Približne 9,4 milióna osôb v EHP, z toho približne 1,5 milióna v Spojenom kráľovstve \\
+        Dopad na platobné karty & Približne 60 000 kompromitovaných kariet Barclays a približne 6 000 vymenených kariet Monzo \\
+        Regulačný následok & Pokuta 1,25 milióna libier od ICO \\
+        Hlavné poučenie & Externé skripty a služby tretích strán na platobnej stránke musia byť hodnotené, kontrolované a monitorované \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

@@ -1,3 +1,51 @@
 \section{Možnosti prevencie a ochrany}
 
-Text kapitoly doplníš sem.
+\subsection{Ochrana platobnej stránky a správa skriptov}
+
+Ochrana proti web skimmingu vychádza z toho, že útok prebieha priamo v prehliadači zákazníka, nie iba na serveri. Nestačí teda chrániť databázu, administráciu či platobný server -- prevádzkovateľ musí mať prehľad aj o tom, aký JavaScript sa spúšťa na platobnej stránke, odkiaľ pochádza a či zodpovedá očakávanej verzii.
+
+Dôležitým opatrením je obmedzenie počtu skriptov tam, kde zákazník zadáva platobné údaje. Stránka by nemala obsahovať zbytočné marketingové, reklamné, analytické či podporné prvky -- každý externý skript je ďalším bodom dôvery a potenciálnym rizikom \cite{owaspThirdPartyJavascript}. PCI Security Standards Council preto zdôrazňuje autorizáciu skriptov, kontrolu ich integrity a monitorovanie neoprávnených zmien -- prevádzkovateľ musí vedieť, ktoré skripty sú povolené, prečo sú potrebné a či sa ich obsah nezmenil bez schválenia \cite{pciSsc2025PaymentPage}. Prípad Ticketmaster ukázal, že aj prvok pôsobiaci ako pomocná služba (chatbot) sa stáva vážnym rizikom, ak je vložený tam, kde sa zadávajú platobné údaje \cite{ico2020Ticketmaster}.
+
+\subsection{Technické opatrenia}
+
+Content Security Policy (CSP) umožňuje určiť, z ktorých zdrojov môže stránka načítavať skripty, štýly a obrázky a obmedziť aj komunikáciu s neznámymi doménami. Pri web skimmingu je to dôležité, lebo škodlivý kód sa snaží odoslať údaje na server útočníka -- CSP nie je samostatným riešením, ale znižuje priestor pre neoprávnenú komunikáciu \cite{owaspThirdPartyJavascript,owaspClientSideTop10}. Subresource Integrity (SRI) umožňuje prehliadaču overiť, či externý súbor zodpovedá očakávanému hashu, a v opačnom prípade ho neprijať -- užitočné je najmä pri knižniciach z externých serverov, lebo útok môže vzniknúť práve nenápadnou úpravou legitímneho súboru \cite{owaspSRI}.
+
+Súčasťou ochrany musí byť pravidelný monitoring zmien na platobných stránkach -- zmenený skript, nová externá doména alebo neznámy kód môžu byť signálom začínajúceho e-skimmingového útoku \cite{pciSsc2025PaymentPage}. K technickým opatreniam patria aj pravidelné aktualizácie e-commerce platformy, pluginov a knižníc; OWASP Top 10 Client-Side Security Risks upozorňuje na zraniteľné a zastarané komponenty na strane klienta \cite{owaspClientSideTop10}. Vhodné je tiež oddeliť platobný proces od marketingových a analytických funkcií -- čím menej externých prvkov beží na platobnej stránke, tým menší je priestor na kompromitáciu cez tretiu stranu, čo potvrdzujú aj analyzované prípady.
+
+\subsection{Organizačné opatrenia a riadenie rizík}
+
+Prevencia nie je iba technickou úlohou, ale aj otázkou riadenia rizík. Prevádzkovateľ má mať prehľad o tom, kto má prístup k administrácii, kto môže meniť skripty, kto schvaľuje nové externé služby a ako sa kontroluje ich bezpečnosť. FBI upozorňuje, že útočníci získavajú prístup aj cez phishing voči zamestnancom alebo cez zraniteľného dodávateľa tretej strany \cite{fbi2019eskimming}. S tým súvisí kontrola dodávateľov: externé skripty, chatboty, analytika či pluginy musia byť pred nasadením na platobné stránky posúdené z hľadiska bezpečnostného rizika, nielen funkcionality. Ticketmaster ukazuje, že zanedbanie tohto rizika vedie k vážnemu incidentu a regulačnej sankcii \cite{ico2020Ticketmaster}.
+
+Organizácia musí mať pripravený plán reakcie na incident -- pri podozrení rýchlo identifikovať rozsah kompromitácie, odstrániť kód, skontrolovať platobnú stránku a komunikovať s bankami a partnermi. Pri incidentoch s osobnými údajmi môže vzniknúť aj povinnosť oznámenia dozornému orgánu alebo dotknutým osobám podľa GDPR \cite{gdpr2016}. Bezpečnostné testovanie musí zahŕňať aj kontrolu načítaných skriptov, sieťovej komunikácie a správania checkout procesu -- stránka môže pre používateľa fungovať bežne a zároveň odosielať údaje na neznámu doménu, takže testovanie sa nemôže obmedziť na serverovú časť \cite{pciSsc2025PaymentPage,owaspClientSideTop10}. Doplnkom je školenie zamestnancov: silné heslá, viacfaktorové overenie a obozretnosť voči phishingu znižujú pravdepodobnosť, že útočník získa prvotný prístup \cite{fbi2019eskimming}.
+
+\subsection{Opatrenia z pohľadu zákazníka}
+
+Hlavná zodpovednosť leží na prevádzkovateľovi, ale určitú mieru ochrany môže uplatniť aj zákazník: kontrolovať pohyby na účte, používať oznámenia o platbách, pri podozrivých transakciách kontaktovať banku a podľa možnosti využívať jednorazové či virtuálne karty, nižšie limity pre online platby a metódy s dodatočným potvrdením transakcie. Tieto opatrenia útoku nezabraňujú, len znižujú škodu po kompromitácii. Analyzované prípady ukazujú, že obeťou web skimmingu sa môžu stať aj zákazníci veľkých služieb, takže skutočná prevencia leží predovšetkým na prevádzkovateľoch e-shopov, platobných stránok a poskytovateľoch externých služieb.
+
+\subsection{Prehľad ochranných opatrení}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Prehľad ochranných opatrení proti web skimmingu}
+    \label{tab:protection-measures}
+    \begin{tabularx}{\textwidth}{@{}p{0.34\textwidth}X@{}}
+        \toprule
+        \textbf{Opatrenie} & \textbf{Význam pri ochrane proti web skimmingu} \\
+        \midrule
+        Autorizácia skriptov na platobnej stránke & Prevádzkovateľ vie, ktoré skripty sú povolené a prečo sa na stránke spúšťajú. \\
+        Kontrola integrity skriptov & Pomáha odhaliť, či sa externý alebo interný skript nezmenil bez schválenia. \\
+        Monitoring zmien platobnej stránky & Umožňuje zistiť neoprávnené úpravy stránky alebo pridaný škodlivý kód. \\
+        Obmedzenie skriptov tretích strán & Znižuje riziko kompromitácie cez externého dodávateľa alebo službu. \\
+        Content Security Policy & Obmedzuje zdroje, z ktorých môže stránka načítavať obsah a s ktorými môže komunikovať. \\
+        Subresource Integrity & Overuje, či načítaný externý súbor zodpovedá očakávanému obsahu. \\
+        Aktualizácia platformy a pluginov & Znižuje riziko zneužitia známych zraniteľností. \\
+        Bezpečnostné testovanie checkout procesu & Pomáha odhaliť podozrivé správanie klientského kódu a externú komunikáciu. \\
+        Riadenie dodávateľov & Zabezpečuje, že externé služby používané na platobnej stránke sú posúdené z hľadiska rizika. \\
+        Plán reakcie na incident & Umožňuje rýchlu reakciu pri zistení kompromitácie platobnej stránky. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Zhrnutie ochrany}
+
+Účinná ochrana kombinuje technické, organizačné a procesné opatrenia: technické chránia integritu skriptov a obmedzujú externé zdroje, organizačné riešia prístupy, dodávateľov, školenie a reakciu na incident, procesné zabezpečujú, aby sa ochrana platobnej stránky nekončila jednorazovou kontrolou. Najdôležitejšou myšlienkou je, že platobná stránka je vysoko citlivá časť webovej aplikácie -- nestačí, aby vyzerala dôveryhodne a používala HTTPS. Musí byť jasné, aký kód sa na nej spúšťa, kto ho dodáva, či bol autorizovaný a či sa nezmenil. Web skimming využíva práve priestor medzi dôverou zákazníka v legitímnu stránku a nedostatočnou kontrolou klientského kódu.

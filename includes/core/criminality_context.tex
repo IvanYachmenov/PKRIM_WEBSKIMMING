@@ -1,3 +1,25 @@
 \section{Kriminálna podstata a dopady útoku}
 
-Text kapitoly doplníš sem.
+\subsection{Web skimming ako forma finančne motivovanej kriminality}
+
+Web skimming nie je iba technický problém: v jadre ide o finančne motivovanú kriminalitu, pri ktorej hlavnou hodnotou nie je výpadok služby ani poškodenie údajov, ale platobné a osobné údaje zákazníkov, ktoré možno zneužiť pri podvodných platbách, predať alebo použiť v ďalších útokoch. Útok sa odohráva počas legitímne vyzerajúceho nákupu a obeť často nevie, kde k úniku došlo; problém sa prejaví až pri podozrivej transakcii, upozornení banky alebo oznámení incidentu \cite{cisa2020eskimming,europolDigitalSkimming,fbi2019eskimming,pciSsc2025PaymentPage}.
+
+Z pohľadu kriminality sa spája viacero krokov: neoprávnené ovplyvnenie stránky, skriptu alebo dodávateľského reťazca, neoprávnené získanie platobných a osobných údajov a ich následné zneužitie, predaj alebo odovzdanie ďalším aktérom. Práve táto postupnosť odlišuje web skimming od samotnej zraniteľnosti -- jej zneužitie na získanie cudzieho majetkového prospechu už patrí do trestnej a finančnej kriminality \cite{cisa2020eskimming,europolDigitalSkimming,slovakCriminalCode2005}. Pojem Magecart navyše neoznačuje jeden program, ale širší okruh skupín, kampaní a techník, čo svedčí o opakovanom kriminálnom modeli zameranom na online platby \cite{fortinet2019MagecartSkimmer}.
+
+\subsection{Dopady na zákazníkov a zneužitie ukradnutých údajov}
+
+Najpriamejšou obeťou je zákazník. Ohrozené môžu byť meno, e-mail, telefón, fakturačná či doručovacia adresa a údaje z platobnej karty -- pri e-skimmingu nejde iba o krádež čísla karty, ale aj o získavanie osobne identifikovateľných informácií z checkout formulárov \cite{cisa2020eskimming}. Pre platby bez fyzickej karty sú cenné najmä číslo karty, dátum expirácie, meno držiteľa a bezpečnostný kód; v kombinácii s adresnými údajmi vzniká priestor na ďalšie zneužitie \cite{europolDigitalSkimming}.
+
+Dopad nemusí končiť pri podvodnej transakcii. Aj keď banka platbu zablokuje, obeť rieši výmenu karty, kontrolu účtu a neistotu, ktoré ďalšie údaje boli odcudzené. Osobné údaje z jedného incidentu sa navyše kombinujú s údajmi z iných únikov a vytvárajú priestor pre cielenejšie sociálne inžinierstvo či pokusy o prevzatie účtov \cite{gdpr2016}. Problém zhoršuje oneskorené odhalenie -- škodlivý kód môže byť aktívny dlhšie a Europol pri akcii proti digital skimmingu identifikoval stovky kompromitovaných obchodníkov, čo svedčí o rozsahu javu \cite{europol2023action}.
+
+\subsection{Dopady na prevádzkovateľov e-shopov a online služieb}
+
+Prevádzkovateľ je zasiahnutý viacerými spôsobmi. Prvým je strata dôvery: ak sa stránka stane nástrojom krádeže údajov, reputačná škoda môže byť vážna a zákazníci môžu službu prestať používať. Druhým sú náklady na riešenie incidentu -- identifikácia kompromitácie, odstránenie kódu, forenzná analýza, komunikácia so zákazníkmi a platobnými partnermi, prípadne zapojenie bánk, kartových spoločností, právnikov či dozorných orgánov \cite{pciSsc2025PaymentPage,gdpr2016}.
+
+Tretím dopadom je právna a regulačná zodpovednosť. GDPR vyžaduje primerané technické a organizačné opatrenia a pri incidente sa skúma, či boli vzhľadom na riziko dostatočné. Pri web skimmingu nestačí tvrdiť, že údaje ukradol externý útočník; podstatné je aj to, ako prevádzkovateľ chránil platobnú stránku, externé skripty a prostredie, v ktorom zákazník údaje zadával \cite{gdpr2016,pciSsc2025PaymentPage}. Konkrétne dopady tohto typu sú podrobnejšie rozobrané v prípadových štúdiách British Airways a Ticketmaster.
+
+\subsection{Právny a regulačný rozmer incidentu}
+
+Pri web skimmingu treba rozlišovať trestnoprávny pohľad na páchateľa a regulačný pohľad na povinnosti prevádzkovateľa. Zo slovenského trestnoprávneho pohľadu môže ísť najmä o neoprávnený prístup alebo zásah do počítačového systému, manipuláciu s údajmi, podvodné konanie alebo neoprávnené nakladanie s platobným prostriedkom; presná kvalifikácia závisí od konkrétnych okolností -- ako sa páchateľ dostal k webu, čo upravil, aké údaje získal, aká škoda vznikla a ako boli údaje použité \cite{slovakCriminalCode2005}.
+
+Regulačný rozmer sa týka najmä ochrany osobných údajov. GDPR v článku 32 vyžaduje primeranú bezpečnosť spracúvania s ohľadom na stav techniky a riziká pre práva fyzických osôb; pri web skimmingu sa preto skúma najmä kontrola klientského kódu, skriptov tretích strán a zmien na platobnej stránke. Ak incident predstavuje riziko pre práva osôb, prevádzkovateľ ho má oznámiť dozornému orgánu spravidla do 72 hodín a pri vysokom riziku informovať aj zákazníkov \cite{gdpr2016,pciSsc2025PaymentPage}.

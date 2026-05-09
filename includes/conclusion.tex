@@ -1,3 +1,9 @@
 \section{Záver}
 
-Text záveru doplníš sem.
+Web skimming je špecifickou formou počítačovej kriminality, v ktorej sa technická manipulácia webovej stránky spája s priamym finančným zneužitím. Na rozdiel od viditeľnejších útokov nespôsobuje výpadok, zničenie dát ani zmenu vzhľadu -- jeho nebezpečnosť spočíva v nenápadnosti. Zákazník môže používať legitímnu stránku známeho obchodníka, úspešne dokončiť objednávku a pritom prísť o platobné údaje odcudzené škodlivým skriptom.
+
+Cieľom práce bolo vysvetliť web skimming, opísať jeho technický princíp a kriminálnu podstatu a porovnať vybrané prípady. Z teoretickej časti vyplýva, že podstatou útoku je zneužitie klientského prostredia, najmä JavaScriptu v prehliadači používateľa -- útok nemusí cieliť na databázu ani platobnú bránu, stačí dostať škodlivý kód na stránku, kde zákazník zadáva citlivé údaje. Prípadové štúdie ukázali viacero podôb javu: British Airways predstavuje veľký incident s výraznými právnymi a reputačnými následkami, Ticketmaster ukazuje riziko skriptov tretích strán v platobnom procese a Newegg je technicky jasný príklad Magecart útoku na checkout stránku. Spoločným znakom je zneužitie dôvery v legitímnu online službu.
+
+Ochrana sa preto nemôže obmedziť na klasickú serverovú bezpečnosť. Nutná je kontrola klientského kódu, externých skriptov, integrity zdrojov a komunikácie platobnej stránky s externými doménami -- prevádzkovateľ musí vedieť, čo sa na platobnej stránke reálne spúšťa a či je každý prvok potrebný, autorizovaný a monitorovaný. Z kriminálneho hľadiska je web skimming závažný tým, že ukradnuté údaje majú priamu ekonomickú hodnotu a dopad sa týka nielen prevádzkovateľa, ale aj zákazníkov, bánk a regulačných orgánov.
+
+Najdôležitejším záverom je, že platobná stránka je kritickou časťou webovej aplikácie. Nestačí, aby pôsobila dôveryhodne a používala HTTPS -- potrebná je aktívna kontrola skriptov, obmedzenie zbytočných tretích strán, monitorovanie zmien a pripravenosť na incident. Web skimming ukazuje, že moderná kyberkriminalita často neútočí hlučne, ale ticho využíva dôveru používateľov a slabé miesta v dodávateľskom reťazci webových aplikácií.

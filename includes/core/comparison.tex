@@ -1,3 +1,45 @@
 \section{Porovnanie prípadov}
 
-Text kapitoly doplníš sem.
+\subsection{Spoločné znaky vybraných incidentov}
+
+British Airways, Ticketmaster a Newegg sú odlišné situácie, ale spája ich rovnaký mechanizmus: používateľ pracoval s legitímnou online službou a údaje zadával počas bežného nákupu. Nešlo o phishingový scenár s falošnou stránkou -- riziko vzniklo priamo v prostredí služby, ktorej zákazník dôveroval \cite{edpb2019BritishAirways,ico2020Ticketmaster,volexity2018Newegg}. Spoločná je aj finančná motivácia: útočníkom nešlo o znefunkčnenie služby, ale o údaje s ekonomickou hodnotou \cite{fortinet2019MagecartSkimmer}.
+
+Ďalšou spoločnou črtou je nenápadnosť. Web skimming nespôsobuje výpadok -- stránka funguje, objednávka prejde a útok sa odhalí až nepriamo cez podozrivé transakcie, upozornenie banky alebo regulátora. Najzreteľnejšie to vidieť pri British Airways a Newegg, kde incident nebol pre používateľa okamžite viditeľný \cite{simmons2020BritishAirwaysPenalty,volexity2018Newegg,pciSsc2025PaymentPage}. Všetky tri prípady zároveň potvrdzujú význam kontroly klientského kódu: nestačí chrániť databázu, server či prenos -- prevádzkovateľ musí vedieť, aký JavaScript sa spúšťa na platobnej stránke, odkiaľ pochádza a či sa nemení bez vedomia správcu \cite{owaspThirdPartyJavascript,ico2020Ticketmaster,pciSsc2025PaymentPage}.
+
+\subsection{Rozdiely medzi prípadmi}
+
+Každý prípad zvýrazňuje inú časť problému. British Airways je najvýraznejší pre právne, finančné a reputačné následky -- pôvodne oznámený zámer vysokej pokuty a konečné rozhodnutie 20 miliónov libier ukazujú, že web skimming môže prerásť z technického narušenia do rozsiahleho prípadu ochrany osobných údajov a firemnej zodpovednosti \cite{edpb2019BritishAirways,gdprRegister2020BritishAirways}.
+
+Ticketmaster je najdôležitejší z pohľadu rizika tretích strán: chatbot tretej strany nebol okrajovým prvkom, lebo sa nachádzal v prostredí so zadávaním citlivých údajov, takže prevádzkovateľ musí posudzovať aj bezpečnosť externých skriptov na platobnej stránke \cite{ico2020Ticketmaster,pciSsc2025PaymentPage}. Newegg je najčistejší technický príklad útoku Magecart -- škodlivý JavaScript v checkout procese odosielal údaje na doménu neweggstats.com, zvolenú tak, aby pôsobila ako legitímne prostredie spoločnosti. Prípad ilustruje maskovanie infraštruktúry a význam monitorovania externých domén \cite{volexity2018Newegg}.
+
+\subsection{Komparatívna tabuľka}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Porovnanie vybraných prípadov web skimmingu}
+    \label{tab:comparison-cases}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.18}
+    \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Kritérium} & \textbf{British Airways} & \textbf{Ticketmaster} & \textbf{Newegg} \\
+        \midrule
+        Rok incidentu & 2018 & 2018 & 2018 \\
+        Typ organizácie & Letecká spoločnosť a online rezervačná služba & Online predaj vstupeniek & E-commerce obchod s elektronikou \\
+        Hlavný typ útoku & Web skimming a presmerovanie zákazníckych údajov & Web skimming cez komponent tretej strany & Magecart / web skimming v checkout procese \\
+        Hlavný rizikový prvok & Nedostatočne chránený online rezervačný a platobný proces & Chatbot tretej strany na platobnej stránke & Škodlivý JavaScript na doméne secure.newegg.com \\
+        Ohrozené údaje & Osobné a platobné údaje zákazníkov & Osobné a platobné údaje zákazníkov & Platobné údaje zákazníkov \\
+        Osobitná črta prípadu & Výrazný GDPR a reputačný dopad & Riziko služieb tretích strán & Technicky jasný Magecart scenár \\
+        Regulačný alebo verejný následok & Konečná pokuta 20 miliónov libier & Pokuta 1,25 milióna libier & Verejne známa technická analýza útoku \\
+        Hlavné poučenie & Potreba včasného odhalenia útoku a ochrany zákazníckych údajov & Externé skripty na platobnej stránke musia byť kontrolované & Checkout proces musí byť monitorovaný na úrovni klientského kódu aj komunikácie s externými doménami \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Vyhodnotenie a hlavné poučenia}
+
+Web skimming nie je jeden konkrétny postup, ale skupina útokov so spoločným cieľom a rôznym vstupným bodom, infraštruktúrou aj následkami. Vo všetkých prípadoch útočníci využívajú to, že platobná stránka je dôveryhodným miestom, kde zákazník zadáva citlivé údaje \cite{cisa2020eskimming,owaspThirdPartyJavascript,pciSsc2025PaymentPage}.
+
+Najdôležitejšie poučenie sa týka kontroly toho, čo sa na platobnej stránke reálne spúšťa: aj pri zabezpečenej databáze, šifrovanom prenose a legitímnej platobnej bráne môžu byť údaje odcudzené, ak na stránke beží neautorizovaný alebo kompromitovaný JavaScript -- preto PCI Security Standards Council zdôrazňuje autorizáciu skriptov, kontrolu integrity a monitorovanie zmien \cite{pciSsc2025PaymentPage}. Druhé poučenie sa týka tretích strán: Ticketmaster ukazuje, že externá služba v platobnom procese môže vytvoriť kritické riziko, takže každý takýto prvok musí byť odôvodnený, kontrolovaný a monitorovaný \cite{owaspThirdPartyJavascript,ico2020Ticketmaster,owaspClientSideTop10}. Tretie poučenie sa týka detekcie: British Airways aj Newegg dokazujú, že útok môže fungovať dlhší čas bez všimnutia, takže nestačí reagovať až po sťažnostiach -- nutné je aktívne monitorovanie zmien na platobných stránkach, kontrola externých domén a testovanie klientského prostredia \cite{simmons2020BritishAirwaysPenalty,volexity2018Newegg}.
+
+Web skimming je teda vážna forma počítačovej kriminality práve preto, že spája technickú nenápadnosť s priamym finančným dopadom. Spoločne všetky tri prípady dokazujú, že ochrana platobných stránok musí zahŕňať nielen serverovú bezpečnosť, ale aj kontrolu klientského kódu, externých skriptov a celého dodávateľského reťazca webovej aplikácie.

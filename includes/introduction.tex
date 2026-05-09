@@ -1,3 +1,19 @@
 \section{Úvod}
 
-Text úvodu doplníš sem.
+\subsection{Kontext problematiky}
+
+Pri online nákupe zákazník zadáva do webových formulárov osobné, fakturačné a platobné údaje. Kombinácia finančných a osobných informácií robí z platobných stránok e-shopov atraktívny cieľ pre útočníkov. Útok pritom nemusí mať podobu výpadku služby alebo zničenia dát: pri web skimmingu môže stránka pre zákazníka fungovať bežne a ten si nemusí všimnúť, že jeho údaje boli počas nákupu skopírované a odoslané útočníkom \cite{cisa2020eskimming,europolDigitalSkimming}.
+
+Web skimming (označovaný aj ako e-skimming, digital skimming, formjacking alebo Magecart) je forma počítačovej kriminality, pri ktorej útočníci vložia škodlivý kód do stránky spracúvajúcej online platby a ten zachytáva údaje priamo v prehliadači zákazníka. Útok prepája technickú zraniteľnosť webovej aplikácie s priamym finančným zneužitím: ukradnuté údaje môžu byť použité na neoprávnené platby, predané ďalším skupinám alebo kombinované s inými údajmi pri krádeži identity \cite{fbi2019eskimming,cisa2020eskimming,europolDigitalSkimming}. Závažnosť potvrdzujú aj známe prípady -- British Airways, Ticketmaster a Newegg -- na ktorých sa práca opiera v praktickej časti \cite{edpb2019BritishAirways,ico2020Ticketmaster,volexity2018Newegg}.
+
+\subsection{Cieľ a rozsah práce}
+
+Cieľom práce je vysvetliť web skimming ako konkrétny typ počítačovej kriminality, opísať jeho technický princíp, ukázať jeho prepojenie na krádež platobných údajov a porovnať vybrané prípady z praxe. Práca sa sústredí na útoky, pri ktorých je hlavným mechanizmom vloženie škodlivého JavaScriptu do platobnej stránky alebo do skriptu, ktorý sa na nej načítava.
+
+Po vysvetlení pojmu nasleduje kapitola o technickom princípe a kapitola o kriminálnej podstate útoku. Praktická časť rozoberá tri prípady: British Airways slúži ako príklad veľkého incidentu s právnymi a reputačnými následkami, Ticketmaster ukazuje riziko skriptov tretích strán a Newegg je klasickým Magecart útokom na e-shop. Prípady sú porovnané podľa spôsobu kompromitácie, typu zasiahnutých údajov, úlohy tretích strán, času odhalenia a hlavných poučení. Záverečná kapitola o ochranných opatreniach nadväzuje na požiadavky PCI DSS 6.4.3 a 11.6.1, ktoré od prevádzkovateľov vyžadujú autorizáciu skriptov, kontrolu integrity a monitorovanie zmien \cite{pciSsc2025PaymentPage}.
+
+\subsection{Metodika a použité zdroje}
+
+Práca vychádza z verejne dostupných odborných a oficiálnych zdrojov. Pri definovaní web skimmingu sú použité materiály FBI, CISA a Europolu, ktoré opisujú e-skimming z pohľadu kybernetickej kriminality, prevencie a vyšetrovania; Europol pri medzinárodnej akcii identifikoval stovky kompromitovaných online obchodníkov, čo ilustruje praktický rozsah problému \cite{fbi2019eskimming,cisa2020eskimming,europolDigitalSkimming,europol2023action}. Technická časť sa opiera o materiály OWASP a PCI Security Standards Council; pri prípadových štúdiách sú prednostne použité oficiálne alebo dôveryhodné analytické zdroje -- pre British Airways materiály ICO, pre Ticketmaster dokument publikovaný cez European Data Protection Board a pre Newegg analýza spoločnosti Volexity \cite{owaspThirdPartyJavascript,owaspClientSideTop10,pciSsc2025PaymentPage,edpb2019BritishAirways,gdprRegister2020BritishAirways,ico2020Ticketmaster,volexity2018Newegg}.
+
+Metodika má analytický a komparatívny charakter: najskôr je vysvetlený mechanizmus útoku, potom sú rozobrané prípady (spôsob útoku, ohrozené údaje, úloha tretích strán, následky) a nakoniec sú porovnané a zhrnuté do poučení pre prevádzkovateľov e-shopov a online služieb.

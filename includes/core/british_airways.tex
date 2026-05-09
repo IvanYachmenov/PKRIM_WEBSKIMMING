@@ -1,3 +1,44 @@
-\section{Prípad 1: British Airways}
+\section{Prípadová štúdia: British Airways}
 
-Text kapitoly doplníš sem.
+\subsection{Charakteristika incidentu}
+
+Incident British Airways patrí medzi najznámejšie prípady web skimmingu, pretože spojil technický útok na online službu s rozsiahlymi následkami v ochrane osobných údajov. Pri kúpe letenky zákazník zadáva kontaktné, cestovné a platobné údaje -- kombináciu informácií zneužiteľnú pri finančných podvodoch aj pri ďalšej práci s identitou obete.
+
+ICO v roku 2019 oznámil zámer uložiť British Airways pokutu 183,39 milióna libier za porušenie GDPR. Podľa oznámenia boli zákaznícke údaje počas útoku presmerované na podvodnú stránku; spoločnosť incident oznámila v septembri 2018 a pôvodné oznámenie uvádzalo až 500\,000 dotknutých zákazníkov \cite{edpb2019BritishAirways}. Konečné rozhodnutie znížilo pokutu na 20 miliónov libier; podľa zhrnutia útok prebiehal od 22. júna do 5. septembra 2018 a útočník získal prístup k údajom platobných kariet a osobným údajom približne 429\,000 zákazníkov, pričom incident sa týkal viac ako 400\,000 osôb \cite{gdprRegister2020BritishAirways,simmons2020BritishAirwaysPenalty}.
+
+Význam prípadu nespočíva iba v technike útoku. Útok vykonal externý páchateľ, no posudzovalo sa aj to, či mala British Airways primerané technické a organizačné opatrenia -- web skimming tak nie je len problémom škodlivého kódu, ale aj riadenia bezpečnosti, monitoringu a ochrany osobných údajov.
+
+\subsection{Technická a kriminálna stránka prípadu}
+
+Zákazníci používali legitímnu službu a údaje zadávali v rámci bežného rezervačného alebo platobného procesu, ale časť údajov bola počas útoku zachytávaná a smerovaná mimo prostredia spoločnosti. ICO uviedlo, že incident zahŕňal presmerovanie používateľskej prevádzky z webu British Airways na podvodnú stránku, kde útočníci zhromažďovali údaje \cite{edpb2019BritishAirways}.
+
+Podľa právneho zhrnutia útočník najskôr využil prihlasovacie údaje spojené s externým dodávateľom Swissport a z obmedzeného prostredia sa dostal do širšej siete British Airways. Údaje sa získavali viacerými spôsobmi vrátane nešifrovaných logov a presmerovania platobných údajov z webu na infraštruktúru útočníka \cite{simmons2020BritishAirwaysPenalty}. Pre túto prácu je dôležitá najmä druhá časť, lebo zodpovedá útoku na platobný proces a klientsku časť služby. Prípad je často uvádzaný v súvislosti s pojmom Magecart -- Fortinet ho zaraďuje medzi známe príklady tohto typu digitálneho skimmingu \cite{fortinet2019MagecartSkimmer}.
+
+Dôležité je aj oneskorené odhalenie: škodlivá aktivita bola aktívna viac ako dva mesiace a spoločnosť bola na podozrivý prenos upozornená treťou stranou \cite{simmons2020BritishAirwaysPenalty}.
+
+\subsection{Následky a význam prípadu}
+
+Najviditeľnejším následkom bola sankcia ICO. Pôvodný zámer 183,39 milióna libier vyvolal výraznú pozornosť, pretože išlo o jeden z prvých veľkých prípadov po zavedení GDPR \cite{edpb2019BritishAirways}; konečná pokuta 20 miliónov libier bola síce nižšia, ale stále predstavovala jasný signál, že nedostatočná ochrana zákazníckych údajov má vážne právne a finančné dôsledky \cite{gdprRegister2020BritishAirways}. K tomu sa pripája reputačný dopad -- pri kompromitácii údajov pri bežnej rezervácii sa narúša dôvera v schopnosť veľkej organizácie chrániť celý digitálny proces.
+
+Prípad ukazuje praktický význam povinnosti prijať primerané technické a organizačné opatrenia: nestačí spätne konštatovať, že útok vykonal externý páchateľ -- organizácia musí vedieť kontrolovať systémy, znižovať riziko zneužitia prístupov a detegovať podozrivé zmeny. ICO považovalo za významné, že dostupné bezpečnostné opatrenia mohli útok zastaviť alebo aspoň obmedziť jeho dopad \cite{simmons2020BritishAirwaysPenalty}.
+
+\subsection{Zhrnutie prípadu British Airways}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Zhrnutie prípadu British Airways}
+    \label{tab:british-airways-summary}
+    \begin{tabularx}{\textwidth}{@{}p{0.34\textwidth}X@{}}
+        \toprule
+        \textbf{Kritérium} & \textbf{British Airways} \\
+        \midrule
+        Rok incidentu & 2018 \\
+        Typ organizácie & Letecká spoločnosť a online rezervačná služba \\
+        Typ útoku & Web skimming a presmerovanie zákazníckych údajov mimo legitímneho prostredia služby \\
+        Ohrozené údaje & Osobné údaje a údaje platobných kariet zákazníkov \\
+        Počet dotknutých zákazníkov & Viac ako 400 000 podľa konečného rozhodnutia; približne 500 000 podľa pôvodného oznámenia ICO \\
+        Regulačný následok & Pôvodne oznámený zámer pokuty 183,39 milióna libier; konečná pokuta 20 miliónov libier \\
+        Hlavné poučenie & Potreba monitorovať webovú a sieťovú infraštruktúru, chrániť platobný proces a včas odhaľovať neoprávnené zmeny alebo podozrivý prenos údajov \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
